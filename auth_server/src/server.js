@@ -5,6 +5,16 @@ const router = require("./routes/index");
 const cors = require("cors");
 const { Client } = require("pg");
 
+const app = express();
+
+const corsOptions = {
+  origin: process.env.CLIENT_URL,
+  optionsSuccessStatus: 200,
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+
 const client = new Client({
   connectionString: process.env.PG_CONNECTION_STRING,
   ssl: { rejectUnauthorized: false },
@@ -15,15 +25,6 @@ client.connect((err) => {
   else console.log("DB connected");
 });
 
-const corsOptions = {
-  origin: process.env.CLIENT_URL,
-  optionsSuccessStatus: 200,
-  credentials: true,
-};
-
-const app = express();
-
-app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 app.use("/", router);
