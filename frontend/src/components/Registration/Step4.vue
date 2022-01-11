@@ -64,12 +64,15 @@ export default {
             registerLoading: false,
             search: '',
             selectedSpecializations: [],
+            fetchedSpecializations: []
         }
     },
     created() {
         console.log(this.userData)
-        axios.get("specializations").then((response) => {
-            response.data.forEach((element) => {
+        axios.get(`${process.env.VUE_APP_AUTH_URL}/auth/specializations`).then((response) => {
+            console.log('response.data', response.data)
+            this.fetchedSpecializations = response.data.data.specializations;
+            response.data.data.specializations.forEach((element) => {
                 this.specializations.push(element.name)
             })
         })
@@ -79,19 +82,13 @@ export default {
 
 
         registerDoctor() {
-            console.log(this.selectedSpecializations)
+            
+            const specializationsId = this.selectedSpecializations.map(spec => this.fetchedSpecializations.find(item => item.name === spec).id)
             this.registerLoading = true
+            console.log('thiasdasds', this.userData)
             this.userData['registrationType'] = 'doctorType'
-            const formData = new FormData()
-            for (const element in this.userData) {
-                formData.append(element, this.userData[element])
-            }
-            formData.append('specializationNames', JSON.stringify(this.selectedSpecializations))
-            axios.post("registration", formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                },
-            })
+            console.log('this.userData', {...this.userData, specializationIds:specializationsId})
+            axios.post(`${process.env.VUE_APP_AUTH_URL}/auth/registration`, {...this.userData, specializationIds:specializationsId})
                 .then(() => {
                     this.$emit('fourthStepComplete')
                     this.$toast.success('Congratulations! You have registered successfully.')
