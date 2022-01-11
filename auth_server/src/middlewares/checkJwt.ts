@@ -37,7 +37,7 @@ export const checkJwt = async (
     return responseException(res, 400, "Invalid token");
   }
 
-  const user = await prisma.user.findUnique({
+  const user = await prisma.app_user.findUnique({
     where: {
       id: tokenBody.userId,
     },
@@ -47,7 +47,7 @@ export const checkJwt = async (
     return responseException(res, 400, "User does not exist");
   }
 
-  req.User = user;
+  req.app_user = user;
 
   return next();
 };
