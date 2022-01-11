@@ -24,9 +24,9 @@ model app_user {
   role                                  String                  @db.VarChar(50)
   img                                   String?                 @db.VarChar(100)
   enabled                               Boolean
-  account_non_expired                   Boolean
-  account_non_locked                    Boolean
-  credentials_non_expired               Boolean
+  account_non_expired                   Boolean?
+  account_non_locked                    Boolean?
+  credentials_non_expired               Boolean?
   person_id                             Int?                    @unique @db.SmallInt
   person                                person?                 @relation(fields: [person_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   confirmation_token                    confirmation_token[]

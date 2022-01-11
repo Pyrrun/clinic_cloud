@@ -1,3 +1,4 @@
+import methodOverride from "method-override";
 import express from "express";
 
 import consola, { Consola } from "consola";
@@ -28,16 +29,17 @@ export class Server {
   private setConfig() {
     this.app.use(bodyParser.json());
     this.app.use(bodyParser.urlencoded({ extended: true }));
+    this.app.use(methodOverride());
     this.app.use(cors());
 
     dotenv.config();
   }
 
   private setRequestLogger() {
-    this.app.use(async (req, res, next) => {
+    this.app.use(async (err: any, req: any, res: any, next: any) => {
       console.log(`${req.method} - ${req.path}`);
 
-      next();
+      next(err);
     });
   }
 
