@@ -5,11 +5,11 @@ export const tokenAxios = axios.create({
 
 })
 
-tokenAxios.interceptors.request.use(
-    function (config) {
-        config.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('user')
-        return config
-    })
+// tokenAxios.interceptors.request.use(
+//     function (config) {
+//         config.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('user')
+//         return config
+//     })
 
 
 

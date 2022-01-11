@@ -32,22 +32,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
-                .authorizeRequests()
-                .antMatchers(
-                        "/login",
-                        "/registration",
-                        "/registration/*",
-                        "/images/**/*",
-                        "/doctor-panel/**/*",
-                        "/users/email",
-                        "/users/first-name",
-                        "/specializations",
-                        "/users"
-                        )
-                .permitAll()
-                .anyRequest()
-                .authenticated()
-                .and()
+//                .authorizeRequests()
+//                .antMatchers(
+//                        "/login",
+//                        "/registration",
+//                        "/registration/*",
+//                        "/images/**/*",
+//                        "/doctor-panel/**/*",
+//                        "/users/email",
+//                        "/users/first-name",
+//                        "/specializations",
+//                        "/users"
+//                        )
+//                .permitAll()
+//                .anyRequest()
+//                .authenticated()
+//                .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.cors();
