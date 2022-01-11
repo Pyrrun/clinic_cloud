@@ -87,6 +87,7 @@ export default {
                 formData.append(element, this.userData[element])
             }
             formData.append('specializationNames', JSON.stringify(this.selectedSpecializations))
+            console.log('formData', formData)
             axios.post("registration", formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'

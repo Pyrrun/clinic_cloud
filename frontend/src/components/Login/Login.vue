@@ -117,7 +117,7 @@ export default {
 
     methods : {
         login(){
-            axios.post(`${process.env.VUE_APP_BASE_URL}/login`, {
+            axios.post(`${process.env.VUE_APP_AUTH_URL}/auth/login`, {
                 email: this.email,
                 password: this.password
             }).then((response) => {
