@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app: frontend
+spec:
+  replicas: {{ .Values.replicas.frontend }}
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: {{ .Values.image_repository }}{{ .Values.images.frontend }}
+        ports:
+        - containerPort: 80
+        env:
+        - name: VUE_APP_BASE_URL
+          valueFrom:
+            configMapKeyRef:
+              key: vue_app_base_url
+              name: frontend-configmap
+        - name: VUE_APP_AUTH_URL
+          valueFrom:
+            configMapKeyRef:
+              key: vue_app_auth_url
+              name: frontend-configmap

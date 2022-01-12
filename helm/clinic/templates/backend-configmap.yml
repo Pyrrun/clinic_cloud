@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-configmap
+data:
+  db_host: {{ .Values.backend.db_host | quote }}
+  db_database: {{ .Values.backend.db_database | quote }}
+  db_user: {{ .Values.backend.db_user | quote }}
+  db_password: {{ .Values.backend.db_password | quote }}
+  db_port: {{ .Values.backend.db_port | quote }}
+  mail_host: {{ .Values.backend.mail_host | quote }}
+  mail_port: {{ .Values.backend.mail_port | quote }}
+  mail_username: {{ .Values.backend.mail_username | quote }} 
+  mail_password: {{ .Values.backend.mail_password | quote }}
+  jwt_secret: {{ .Values.backend.jwt_secret | quote }}
+  cloudinary_api_key: {{ .Values.backend.cloudinary_api_key | quote }}
+  cloudinary_api_secret: {{  .Values.backend.cloudinary_api_secret | quote }}
+  cloudinary_name: {{ .Values.backend.cloudinary_name | quote }}
+  cloudinary_url: {{ .Values.backend.cloudinary_url | quote }}
+  client_url: {{ .Values.backend.client_url | quote }}
