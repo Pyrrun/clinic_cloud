@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@prisma/client": "^3.6.0",
+    "@prisma/client": "^3.8.0",
     "argon2": "^0.28.3",
     "body-parser": "^1.19.1",
     "consola": "^2.15.3",
