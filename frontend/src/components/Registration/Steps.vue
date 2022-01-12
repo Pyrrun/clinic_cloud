@@ -108,16 +108,8 @@ export default {
             this.registerLoading = true
             let registrationType = {registrationType : 'receptionistType'}
             this.userData = Object.assign(this.userData, registrationType)
-            console.log(this.userData)
-            const formData = new FormData()
-            for (const element in this.userData) {
-                formData.append(element.toString(), this.userData[element])
-            }
-            axios.post("registration", formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                },
-            })
+             console.log('this.userData', {...this.userData})
+            axios.post(`${process.env.VUE_APP_AUTH_URL}/auth/registration`, this.userData)
                 .then(() => {
                     this.$emit('registrationFinished', this.userData)
                     this.$toast.success('Congratulations! You have registered successfully.')

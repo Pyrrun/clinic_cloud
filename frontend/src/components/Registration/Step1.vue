@@ -145,10 +145,8 @@ export default {
         return;
       }
       axios
-        .get("users/email", {
-          params: {
+        .post(`${process.env.VUE_APP_AUTH_URL}/auth/email`, { 
             email: this.email,
-          },
         })
         .then((response) => {
           console.log(response.data);

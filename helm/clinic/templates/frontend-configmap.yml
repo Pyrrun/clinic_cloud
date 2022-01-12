@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: frontend-configmap
+data:
+  vue_app_base_url: {{ .Values.frontend.vue_app_base_url | quote }}
+  vue_app_auth_url: {{ .Values.frontend.vue_app_auth_url | quote }}
