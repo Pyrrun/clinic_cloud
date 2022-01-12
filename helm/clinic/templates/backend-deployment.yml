@@ -1,0 +1,97 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  labels:
+    app: backend
+spec:
+  replicas: {{ .Values.replicas.backend }}
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: {{ .Values.image_repository }}{{ .Values.images.backend }}
+        ports:
+        - containerPort: 8080
+        env:
+        - name: DB_HOST
+          valueFrom:
+            configMapKeyRef:
+              key: db_host
+              name: backend-configmap
+        - name: DB_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              key: db_database
+              name: backend-configmap
+        - name: DB_USER
+          valueFrom:
+            configMapKeyRef:
+              key: db_user
+              name: backend-configmap
+        - name: DB_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              key: db_password
+              name: backend-configmap
+        - name: DB_PORT
+          valueFrom:
+            configMapKeyRef:
+              key: db_port
+              name: backend-configmap
+        - name: MAIL_HOST
+          valueFrom:
+            configMapKeyRef:
+              key: mail_host
+              name: backend-configmap
+        - name: MAIL_PORT
+          valueFrom:
+            configMapKeyRef:
+              key: mail_port
+              name: backend-configmap
+        - name: MAIL_USERNAME
+          valueFrom:
+            configMapKeyRef:
+              key: mail_username
+              name: backend-configmap
+        - name: MAIL_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              key: mail_password
+              name: backend-configmap
+        - name: JWT_SECRET
+          valueFrom:
+            configMapKeyRef:
+              key: jwt_secret
+              name: backend-configmap
+        - name: CLOUDINARY_API_KEY
+          valueFrom:
+            configMapKeyRef:
+              key: cloudinary_api_key
+              name: backend-configmap
+        - name: CLOUDINARY_API_SECRET
+          valueFrom:
+            configMapKeyRef:
+              key: cloudinary_api_secret
+              name: backend-configmap
+        - name: CLOUDINARY_NAME
+          valueFrom:
+            configMapKeyRef:
+              key: cloudinary_name
+              name: backend-configmap
+        - name: CLOUDINARY_URL
+          valueFrom:
+            configMapKeyRef:
+              key: cloudinary_url
+              name: backend-configmap
+        - name: CLIENT_URL
+          valueFrom:
+            configMapKeyRef:
+              key: client_url
+              name: backend-configmap

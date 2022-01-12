@@ -1,0 +1,37 @@
+version: '3'
+services:
+  frontend:
+    build: frontend
+    ports:
+     - 80:80
+    environment:
+     - VUE_APP_BASE_URL=http://172.25.168.79:8080
+  backend:
+    build: backend
+    ports:
+     - 8080:8080 
+    environment:
+     - DB_HOST=ec2-52-209-246-87.eu-west-1.compute.amazonaws.com
+     - DB_DATABASE=d10afs3cjahsfq?sslmode=require&user=upvivgyzhgxvhx&password=5a54841d3c3fa65263a3378ad24299f4214216ada7efb316c2ac2c1bd057b189
+     - DB_USER=postgres
+     - DB_PASSWORD=postgres
+     - DB_PORT=5432
+     - MAIL_HOST=smtp.gmail.com
+     - MAIL_PORT=587
+     - MAIL_USERNAME=mithril982@gmail.com
+     - MAIL_PASSWORD=Pr0j3ctM1thr1l
+     - JWT_SECRET=8d07c4fa-7dfd-4c00-a2d8-d627a89492e5
+     - CLOUDINARY_API_KEY=499259596496364
+     - CLOUDINARY_API_SECRET=6KFvjTHEBjWZzEPtaDJIrO0VbV4
+     - CLOUDINARY_NAME=dpkrneznq
+     - CLOUDINARY_URL=https://res.cloudinary.com/dpkrneznq/image/upload/v1635196214/
+     - CLIENT_URL=http://172.25.168.79
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+
+
+
