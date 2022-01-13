@@ -14,6 +14,7 @@
 * [Napotkane problemy](#napotkane-problemy)
 * [Wnioski](#wnioski)
 * [Autorzy](#autorzy)
+* [Wideo prezentacyjne](#Wideo prezentacyjne)
 
 ## Wstęp
 Sprawozdanie to jest podsumowaniem projektu realizowanego na Wydziale Elektrycznym Politechniki Warszawskiej w ramach części projektowej przedmiotu "Programowanie usług w chmurze" pod kierownictwem dr inż. Radosława Roszczyka.  
@@ -97,6 +98,10 @@ Inne napotkane problemy zdarzały się przy migracji systemu na chmurę. Często
 
 Realizacja projektu pozwoliła nam zaznajomić się z platformą chmurową Microsoft Azure od strony praktycznej - dowiedzieliśmy się, jakie udogodnienia oferują rozwiązania chmurowe oraz jakie problemy generuje proces migracji lokalnej aplikacji na taką platformę. Problemy, z którym się borykaliśmy wynikały głównie z braku obycia z programowaniem usług w chmurze.  
 Platforma chmurowa Microsoft Azure okazała się być intuicyjna oraz przyjazna nowym użytkownikom. W przypadku napotkania problemów służyła przejrzystą dokumentacją oraz samouczkami, które prezentowały krok po kroku jak wykonać określoną czynność.
+
+## Wideo prezentacyjne
+
+link: https://www.youtube.com/watch?v=brdG5onsCfs&ab_channel=MichalJak%C3%B3bczak
 
 ## Autorzy
 
