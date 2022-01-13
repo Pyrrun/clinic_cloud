@@ -14,7 +14,7 @@
 * [Napotkane problemy](#napotkane-problemy)
 * [Wnioski](#wnioski)
 * [Autorzy](#autorzy)
-* [Wideo prezentacyjne](#Wideo prezentacyjne)
+* [Wideo prezentacyjne](#wideo-prezentacyjne)
 
 ## Wstęp
 Sprawozdanie to jest podsumowaniem projektu realizowanego na Wydziale Elektrycznym Politechniki Warszawskiej w ramach części projektowej przedmiotu "Programowanie usług w chmurze" pod kierownictwem dr inż. Radosława Roszczyka.  
