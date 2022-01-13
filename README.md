@@ -54,6 +54,20 @@ Podział zadań, jak i wybór stosu technologicznego zostały wykonane w ten spo
 Realizacja zadań odbyła się sprawnie - ustaliliśmy, że priorytetem będzie implementacja najważniejszych wewnętrznych funkcji systemu opisanych w diagramie przypadków użycia, czyli zarządzanie wizytami, harmonogramem, ogłoszeniami oraz pacjentami. Następnie wykonywane były zadania związane z autoryzacją użytkowników oraz czatem, który finalnie miał być podpięty do innej bazy danych niż pozostałe funkcjonalności systemu.  
 Po przetestowaniu wszystkich zaimplenetowanych funkcji aplikacji rozpoczął się etap migracji na chmurę - był to najbardziej wymagający etap, ponieważ wymagał prawidłowego działania wszystkich zaimplementowanych funkcjonalności.  
 
+## Infrastruktura Azure cloud
+
+Za pomocą programi terraform utworzone zostały wszystkie serwisy potrzebne do uruchomienia aplikacji w chmurze.
+
+![Alt text](utils/azure_services.png?raw=true "elementy stworzone na Azure za pomocą terraforma")
+
+## Klaster Kubernetes
+
+Do uruchomienia aplikacji użyty został Helm Chart. Do wystawienia aplikacji na świat użyty został ingress-nginx.
+
+## CI
+
+Za pomocą Github actions wszystkie obrazy są budowane i wysyłanie do Azure Container Registry przy każdym pushu na branch `master`
+
 ## Napotkane problemy
 
 Najwięcej problemów sprawił etap migracji systemu na chmurę. Bardzo często zdarzało się, że funkcjonalność, która prawidłowo działała uruchomiona lokalnie, w chmurze ulegała błędom. Największym wyzwaniem okazało się podłączenie serwisu autoryzacyjnego do systemu oraz poprawne funkcjonowanie czatu przy zastosowaniu bazy danych redis.
