@@ -10,6 +10,7 @@
 * [Infrastruktura Azure cloud](#infrastruktura-azure-cloud)
 * [Klaster Kubernetes](#klaster-kubernetes)
 * [CI](#ci)
+* [Aplikacja w chmurze](#aplikacja-w-chmurze)
 * [Napotkane problemy](#napotkane-problemy)
 * [Wnioski](#wnioski)
 * [Autorzy](#autorzy)
