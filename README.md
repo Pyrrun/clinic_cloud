@@ -78,7 +78,7 @@ Najwięcej problemów sprawił etap migracji systemu na chmurę. Bardzo często 
 
 ## Wnioski
 
-Realizacja projektu pozwoliła nam zaznajomić się z platformą chmurową Microsoft Azure od strony praktycznej - dowiedzieliśmy się, jakie udogodnienia oferują rozwiązania chmurowe oraz jakie problemy generuje proces migracji lokalnej aplikacji na taką platformę. Problemy, z którym się borykaliśmy wynikały głównie z braku obycia z programowaniem usług w chmurze oraz niewiedzy na temat stosowanych rozwiązań.  
+Realizacja projektu pozwoliła nam zaznajomić się z platformą chmurową Microsoft Azure od strony praktycznej - dowiedzieliśmy się, jakie udogodnienia oferują rozwiązania chmurowe oraz jakie problemy generuje proces migracji lokalnej aplikacji na taką platformę. Problemy, z którym się borykaliśmy wynikały głównie z braku obycia z programowaniem usług w chmurze.  
 Platforma chmurowa Microsoft Azure okazała się być intuicyjna oraz przyjazna nowym użytkownikom. W przypadku napotkania problemów służyła przejrzystą dokumentacją oraz samouczkami, które prezentowały krok po kroku jak wykonać określoną czynność.
 
 ## Autorzy
