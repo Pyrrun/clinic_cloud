@@ -76,6 +76,18 @@ Do uruchomienia aplikacji użyty został Helm Chart. Serwisy są podzielone na D
 
 Za pomocą Github actions wszystkie obrazy są budowane i wysyłanie do Azure Container Registry przy każdym pushu na branch `master`
 
+## Aplikacja w chmurze
+Aplikacja została uruchomiona w chmurze. Dostęp do niej jest pod adresem:  
+`http://20.76.242.22/  `  
+
+W celu zalogowania się na panel lekarza należy podać następujące dane:  
+`E-mail: codeka1516@incoware.com`   
+`Password: Test1234@`  
+
+W celu zalogowania się na panel recepcjonisty należy podać następujące dane:  
+`E-mail: natokax221@healteas.com`  
+`Password: Test1234@`
+
 ## Napotkane problemy
 
 Najwięcej problemów sprawił etap realizacji zadań - w szczególności tych związanych z interfejsem użytkownika. Zaprojektowanie, poprawne zaimplementowanie każdego z okien oraz podłączenie ich do logiki aplikacji było dość zaawansowane i wymagało dużej liczby poprawek i testów.  
