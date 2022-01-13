@@ -1,5 +1,6 @@
+import { checkJwt } from "./middlewares/checkJwt";
 import methodOverride from "method-override";
-import express from "express";
+import express, { Response, Request, NextFunction } from "express";
 
 import consola, { Consola } from "consola";
 import cors from "cors";
@@ -7,6 +8,8 @@ import * as bodyParser from "body-parser";
 
 import * as dotenv from "dotenv";
 import routes from "./routes";
+import { response, responseException } from "./helpers";
+import axiosService from "./axiosServices/services";
 
 export class Server {
   public app: express.Application;
@@ -31,6 +34,7 @@ export class Server {
     this.app.use(bodyParser.urlencoded({ extended: true }));
     this.app.use(methodOverride());
     this.app.use(cors());
+    this.app.use(redirectIfNeeded);
 
     dotenv.config();
   }
@@ -47,3 +51,35 @@ export class Server {
     this.app.use("/", routes);
   }
 }
+
+const ENDPOINTS_WITHOUT_JWT = [
+  "login",
+  "register",
+  "verifyAccount",
+  "specializations",
+];
+
+const redirectIfNeeded = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const route: string = req.originalUrl;
+
+  const routeKey = route.replace("/auth/", "");
+
+  if (ENDPOINTS_WITHOUT_JWT.indexOf(routeKey) !== -1) {
+    return next();
+  }
+  const apiMethod = req.method.toLowerCase();
+
+  await checkJwt(req, res);
+
+  try {
+    const data: any = await axiosService(apiMethod)(route, req?.body);
+    response(res, 200, data);
+  } catch (error) {
+    const code = typeof error?.code === "number" ? error.code : 500;
+    responseException(res, code, JSON.stringify(error?.data));
+  }
+};

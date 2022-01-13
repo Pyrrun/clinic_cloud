@@ -1,15 +1,10 @@
-import { PrismaClient } from "@prisma/client";
-import { Request, Response, NextFunction } from "express";
+import { person } from "@prisma/client";
+import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import { responseException } from "src/helpers";
+import { responseException } from "../helpers";
+import { Person } from "../repository";
 
-const prisma = new PrismaClient();
-
-export const checkJwt = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const checkJwt = async (req: Request, res: Response) => {
   if (!req.headers["authorization"]) {
     return responseException(res, 400, "Missing authorization");
   }
@@ -33,21 +28,15 @@ export const checkJwt = async (
     return responseException(res, 400, "Invalid token");
   }
 
-  if (!tokenBody.userId) {
+  if (!tokenBody?.userEmail) {
     return responseException(res, 400, "Invalid token");
   }
 
-  const user = await prisma.app_user.findUnique({
-    where: {
-      id: tokenBody.userId,
-    },
-  });
+  const person: person | null = await Person.findByEmail(tokenBody?.userEmail);
 
-  if (!user) {
-    return responseException(res, 400, "User does not exist");
+  if (!person) {
+    return responseException(res, 400, "Invalid token");
   }
 
-  req.app_user = user;
-
-  return next();
+  return tokenBody.userEmail;
 };
