@@ -26,10 +26,14 @@ export default async function (req: Request, res: Response) {
   try {
     const passwordMatch = await argon2.verify(user.password, password);
     if (passwordMatch) {
-      const accessToken: string = jwt.sign({ userId: user.id }, "secret");
+      const accessToken: string = jwt.sign(
+        { userEmail: email },
+        process.env.JWT_SECRET || "secret"
+      );
 
       return response(res, 200, {
         ...user,
+        ...person,
         accessToken,
       });
     }
