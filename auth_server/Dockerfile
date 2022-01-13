@@ -1,10 +1,12 @@
 # build stage
-FROM node:12 as build-stage
+FROM node:16 as build-stage
 WORKDIR /app
 COPY package*.json ./
 COPY yarn.lock ./
-RUN yarn install
 COPY . .
+RUN npm install
+RUN npm add -D prisma
+RUN npx prisma generate
 RUN npx tsc
 
 # production stage
