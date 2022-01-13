@@ -7,6 +7,9 @@
 * [Technologie](#technologie)
 * [Projekt systemu](#projekt-systemu)
 * [Sposób realizacji](#sposób-realizacji)
+* [Infrastruktura Azure cloud](#infrastruktura-azure-cloud)
+* [Klaster Kubernetes](#klaster-kubernetes)
+* [CI](#ci)
 * [Napotkane problemy](#napotkane-problemy)
 * [Wnioski](#wnioski)
 * [Autorzy](#autorzy)
@@ -52,7 +55,7 @@ Wykonanie projektu podzieliliśmy na cztery etapy:
 
 Podział zadań, jak i wybór stosu technologicznego zostały wykonane w ten sposób, aby każdy z członków zespołu otrzymał satysfakcjonujące go zadania oraz technologię, w której jest doświadczony.  
 Realizacja zadań odbyła się sprawnie - ustaliliśmy, że priorytetem będzie implementacja najważniejszych wewnętrznych funkcji systemu opisanych w diagramie przypadków użycia, czyli zarządzanie wizytami, harmonogramem, ogłoszeniami oraz pacjentami. Następnie wykonywane były zadania związane z autoryzacją użytkowników oraz czatem, który finalnie miał być podpięty do innej bazy danych niż pozostałe funkcjonalności systemu.  
-Po przetestowaniu wszystkich zaimplenetowanych funkcji aplikacji rozpoczął się etap migracji na chmurę - był to najbardziej wymagający etap, ponieważ wymagał prawidłowego działania wszystkich zaimplementowanych funkcjonalności.  
+Po przetestowaniu wszystkich zaimplenetowanych funkcji aplikacji rozpoczął się etap migracji na chmurę.  
 
 ## Infrastruktura Azure cloud
 
@@ -68,14 +71,15 @@ Za pomocą programi terraform utworzone zostały wszystkie serwisy potrzebne do 
 ## Klaster Kubernetes
 
 Do uruchomienia aplikacji użyty został Helm Chart. Serwisy są podzielone na Deployment, Service i ConfigMap. Do wystawienia aplikacji na świat użyty został ingress-nginx. Z powodu budżetu na Azure Cloud musieliśmy zrezygnować z zakupienia domeny i certyfikatu, dlatego aplikacja jest wystawiona na adresie IP i protokole http, co w prawdziwym produkcyjnym systemie byłoby niewskazane. Dla tego projektu wszystkie dane w systemie są przykładowe i nie niosą ze soba niebezpieczeństwa gdyby dostały się w niepowołane ręce.
+
 ## CI
 
 Za pomocą Github actions wszystkie obrazy są budowane i wysyłanie do Azure Container Registry przy każdym pushu na branch `master`
 
 ## Napotkane problemy
 
-Najwięcej problemów sprawił etap migracji systemu na chmurę. Bardzo często zdarzało się, że funkcjonalność, która prawidłowo działała uruchomiona lokalnie, w chmurze ulegała błędom. Największym wyzwaniem okazało się podłączenie serwisu autoryzacyjnego do systemu oraz poprawne funkcjonowanie czatu przy zastosowaniu bazy danych redis.
-
+Najwięcej problemów sprawił etap realizacji zadań - w szczególności tych związanych z interfejsem użytkownika. Zaprojektowanie, poprawne zaimplementowanie każdego z okien oraz podłączenie ich do logiki aplikacji było dość zaawansowane i wymagało dużej liczby poprawek i testów.  
+Inne napotkane problemy zdarzały się przy migracji systemu na chmurę. Często okazywało się, że funkcjonalność, która prawidłowo działała uruchomiona lokalnie, w chmurze ulegała błędom. Sporym wyzwaniem okazało się również podłączenie serwisu autoryzacyjnego do systemu oraz poprawne funkcjonowanie czatu przy zastosowaniu bazy danych redis - finalnie baza ta nie została zastosowana, natomiast serwis czatu podłączony został do bazy danych, z której korzysta klinika.
 ## Wnioski
 
 Realizacja projektu pozwoliła nam zaznajomić się z platformą chmurową Microsoft Azure od strony praktycznej - dowiedzieliśmy się, jakie udogodnienia oferują rozwiązania chmurowe oraz jakie problemy generuje proces migracji lokalnej aplikacji na taką platformę. Problemy, z którym się borykaliśmy wynikały głównie z braku obycia z programowaniem usług w chmurze.  
