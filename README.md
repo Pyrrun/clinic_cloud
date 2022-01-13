@@ -58,12 +58,16 @@ Po przetestowaniu wszystkich zaimplenetowanych funkcji aplikacji rozpoczął si�
 
 Za pomocą programi terraform utworzone zostały wszystkie serwisy potrzebne do uruchomienia aplikacji w chmurze.
 
+- baza danych - używana do przetrzymywania danych o użytkownikach itp.
+- storage account - do przechowywania zdjęć
+- Azure Container Registry - przechowuje zbudowane obrazy dockerowe
+- AKS - klaster kubernetes, na nim uruchamiane są pody z aplikacją oraz ingress pozwalający dostać się do aplikacji z sieci zewnętrznej
+
 ![Alt text](utils/azure_services.png?raw=true "elementy stworzone na Azure za pomocą terraforma")
 
 ## Klaster Kubernetes
 
-Do uruchomienia aplikacji użyty został Helm Chart. Do wystawienia aplikacji na świat użyty został ingress-nginx.
-
+Do uruchomienia aplikacji użyty został Helm Chart. Serwisy są podzielone na Deployment, Service i ConfigMap. Do wystawienia aplikacji na świat użyty został ingress-nginx. Z powodu budżetu na Azure Cloud musieliśmy zrezygnować z zakupienia domeny i certyfikatu, dlatego aplikacja jest wystawiona na adresie IP i protokole http, co w prawdziwym produkcyjnym systemie byłoby niewskazane. Dla tego projektu wszystkie dane w systemie są przykładowe i nie niosą ze soba niebezpieczeństwa gdyby dostały się w niepowołane ręce.
 ## CI
 
 Za pomocą Github actions wszystkie obrazy są budowane i wysyłanie do Azure Container Registry przy każdym pushu na branch `master`
