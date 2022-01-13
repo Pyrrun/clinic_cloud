@@ -2,8 +2,6 @@
 
 ## Spis treści
 
-Dokumentacja i sprawozdanie mogą być zrobione jako jedno README w repo i zawierać elementy takie jak wstęp, technologie, sposób realizacji, problemy, wnioski etc
-
 * [Wstęp](#wstęp)
 * [Informacje o projekcie](#informacje-o-projekcie)
 * [Technologie](#technologie)
